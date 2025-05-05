@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #fff;
+        }
+        form {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            margin: auto;
+            width: 60%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            resize: vertical;
+            border: none;
+        }
+        select, input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        select {
+            background: #fff;
+            color: #000;
+        }
+        input[type="submit"] {
+            background: #00c6ff;
+            color: white;
+        }
+        input[type="submit"]:hover {
+            background: #0072ff;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #00ffea;
+        }
+    </style>
+</head>
+<body>
+    <h2>Fake News Detection</h2>
+    <form method="POST" action="/predict">
+        <textarea name="news_text" rows="10" placeholder="Paste your news article here..."></textarea><br><br>
+        <select name="model">
+            <option value="nb">Naive Bayes</option>
+            <option value="lr">Logistic Regression</option>
+        </select><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction %}
+        <div class="result">Prediction: {{ prediction }}</div>
+    {% endif %}
+</body>
+</html>
